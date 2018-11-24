@@ -20,6 +20,7 @@
     "vue": "^2.5.17"
   },
   "dependencies": {
+    "glup": "^1.0.14",
     "noty": "^3.2.0-beta"
   }
 }
