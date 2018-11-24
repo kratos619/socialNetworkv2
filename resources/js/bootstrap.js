@@ -1,5 +1,5 @@
 window._ = require('lodash');
-require('noty');
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -7,10 +7,8 @@ require('noty');
  */
 
 try {
-    window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-    require('noty');
-    window.Noty = require('noty');
+    window.Popper = require('popper.js');
 } catch (e) {}
 
 /**
