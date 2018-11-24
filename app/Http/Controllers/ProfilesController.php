@@ -33,9 +33,7 @@ class ProfilesController extends Controller
         Auth::user()->update([
             'location' => $request->location,
             'about' => $request->about
-        ]);
-
-        
+        ]);        
         if ($request->hasFile('avatar')) {
             Auth::user()->update([
                 'avatar' => $request->avatar->store('public/avatars')

@@ -1,6 +1,5 @@
-
 window._ = require('lodash');
-
+require('noty');
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -10,8 +9,8 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap');
+    require('noty');
+    window.Noty = require('noty');
 } catch (e) {}
 
 /**
@@ -21,6 +20,7 @@ try {
  */
 
 window.axios = require('axios');
+window.Noty = require('noty');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -35,7 +35,9 @@ let token = document.head.querySelector('meta[name="csrf-token"]');
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error(
+        'CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token'
+    );
 }
 
 /**
