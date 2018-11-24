@@ -30,10 +30,18 @@ class ProfilesController extends Controller
             'about' => 'required'
         ]);
 
-        Auth::user()->profile()->update([
+        Auth::user()->update([
             'location' => $request->location,
             'about' => $request->about
         ]);
+
+        
+        if ($request->hasFile('avatar')) {
+            Auth::user()->update([
+                'avatar' => $request->avatar->store('public/avatars')
+            ]);
+        }
+
 
         Session::flash('success', 'Profile Updated');
         return redirect()->back();
