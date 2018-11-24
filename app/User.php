@@ -19,6 +19,11 @@ class User extends Authenticatable
         'name', 'email', 'password', 'username','avatar','gender'
     ];
 
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
