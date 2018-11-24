@@ -23,24 +23,23 @@ class ProfilesController extends Controller
 
     public function update(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
 
         $this->validate($request, [
             'location' => 'required|max:255',
             'about' => 'required'
         ]);
 
-        Auth::user()->update([
-            'location' => $request->location,
-            'about' => $request->about
-        ]);        
         if ($request->hasFile('avatar')) {
             Auth::user()->update([
                 'avatar' => $request->avatar->store('public/avatars')
             ]);
         }
-
-
+        Auth::user()->update([
+            'location' => $request->location,
+            'about' => $request->about
+        ]);
+        
         Session::flash('success', 'Profile Updated');
         return redirect()->back();
     }
